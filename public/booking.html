@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Companion — Rent a Boyfriend</title>
+  <meta name="description" content="Book your perfect companion in 3 easy steps. Exclusively for women.">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💕</text></svg>">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/booking.css">
+</head>
+<body class="booking-page">
+
+<!-- ═══ Floating Hearts ═══════════════════════════════════════ -->
+<div class="hearts-container" id="heartsContainer" aria-hidden="true"></div>
+
+<!-- ── Back link (minimal, no full navbar) ──────────────────── -->
+<div style="padding:16px var(--pad-x,24px); background:rgba(255,255,255,0.88); backdrop-filter:blur(16px); border-bottom:1px solid rgba(201,24,74,0.1); display:flex; align-items:center; justify-content:space-between;">
+  <a href="/" style="font-family:var(--f-display,'Playfair Display',serif); font-size:1.2rem; font-weight:700; background:var(--g-text,linear-gradient(135deg,#c9184a,#ff3366)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; text-decoration:none;">Rent a Boyfriend</a>
+  <a href="/" class="btn btn-outline btn-sm">← Back</a>
+</div>
+
+<!-- ═══ MAIN BOOKING AREA ═══════════════════════════════════ -->
+<main class="booking-main">
+  <div style="width: 100%; max-width: 600px; margin: 0 auto;">
+
+    <!-- Step Indicator -->
+    <div class="step-indicator" id="stepIndicator" aria-label="Booking progress">
+      <div class="step-dot active" id="dot1" aria-label="Step 1: Instagram">1</div>
+      <div class="step-line" id="line1"></div>
+      <div class="step-dot" id="dot2" aria-label="Step 2: YouTube">2</div>
+      <div class="step-line" id="line2"></div>
+      <div class="step-dot" id="dot3" aria-label="Step 3: Book">3</div>
+    </div>
+
+    <!-- ═══ Women Only Notice ══════════════════════════════════ -->
+    <div class="notice-strip" role="alert">
+      <strong>ONLY FOR WOMEN.</strong> Male users are not allowed to apply.
+      This service is for companionship, conversation and emotional support only.
+    </div>
+
+    <!-- ─── STEP 1: Instagram ─────────────────────────────── -->
+    <div class="step-card active" id="step1" role="region" aria-label="Step 1">
+      <div class="step-icon-big" style="color:var(--c-rose); font-family:var(--f-display); font-size:3rem; font-weight:800;">01</div>
+      <h1 class="step-title">Follow on Instagram</h1>
+      <p class="step-subtitle">"Stay connected for updates & exclusive content"</p>
+      <p class="step-desc">
+        Before booking, please follow my Instagram account to stay updated with my schedule,
+        availability, and special offers. This ensures you get priority booking notifications!
+      </p>
+
+      <div class="step-check-wrap">
+        <span>&bull;</span>
+        <span>After clicking the button below, follow the account and then continue to the next step.</span>
+      </div>
+
+      <div class="step-btn-wrap">
+        <a
+          href="https://www.instagram.com/nandufleet/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-instagram"
+          id="instagramBtn"
+          aria-label="Follow on Instagram"
+        >
+          Follow on Instagram
+        </a>
+        <button class="btn btn-primary" id="afterInstagram" aria-label="Continue after following">
+          I've Followed! Continue &rarr;
+        </button>
+        <p class="step-skip-note">
+          Already following? Click "I've Followed!" to continue.
+        </p>
+      </div>
+    </div>
+
+    <!-- ─── STEP 2: YouTube ──────────────────────────────── -->
+    <div class="step-card" id="step2" role="region" aria-label="Step 2">
+      <div class="step-icon-big" style="color:var(--c-rose); font-family:var(--f-display); font-size:3rem; font-weight:800;">02</div>
+      <h1 class="step-title">Subscribe on YouTube</h1>
+      <p class="step-subtitle">"Get exclusive content & date ideas"</p>
+      <p class="step-desc">
+        Subscribe to my YouTube channel for fun date ideas, thoughtful conversation starters,
+        and content designed to make your companionship experience even more special!
+      </p>
+
+      <div class="step-check-wrap">
+        <span>&bull;</span>
+        <span>Click subscribe on YouTube and then come back to continue your booking.</span>
+      </div>
+
+      <div class="step-btn-wrap">
+        <a
+          href="https://www.youtube.com/channel/UCgm7kXNqVUCJqxwYvNYBHUA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn btn-youtube"
+          id="youtubeBtn"
+          aria-label="Subscribe on YouTube"
+        >
+          Subscribe on YouTube
+        </a>
+        <button class="btn btn-primary" id="afterYoutube" aria-label="Continue after subscribing">
+          I've Subscribed! Continue &rarr;
+        </button>
+        <p class="step-skip-note">
+          Already subscribed? Click "I've Subscribed!" to continue.
+        </p>
+      </div>
+    </div>
+
+    <!-- ─── STEP 3: Booking Form ──────────────────────────── -->
+    <div class="step-card" id="step3" role="region" aria-label="Step 3: Booking Form">
+      <div class="step-icon-big" style="color:var(--c-rose); font-family:var(--f-display); font-size:3rem; font-weight:800;">03</div>
+      <h1 class="step-title">Complete Your Booking</h1>
+      <p class="step-subtitle">"Almost there! Tell me a bit about yourself"</p>
+
+      <form class="booking-form" id="bookingForm" novalidate>
+
+        <!-- Personal Details -->
+        <div class="form-section-title">Personal Information</div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label" for="fullName">Full Name *</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              name="name"
+              placeholder="Your beautiful name"
+              required
+              maxlength="100"
+              autocomplete="name"
+              aria-required="true"
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="mobile">Mobile Number *</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="mobile"
+              name="mobile"
+              placeholder="+91 98765 43210"
+              required
+              autocomplete="tel"
+              aria-required="true"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="instagram">Instagram Profile Link *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="instagram"
+            name="instagram"
+            placeholder="https://instagram.com/yourprofile"
+            required
+            maxlength="200"
+            aria-required="true"
+          >
+        </div>
+
+        <div class="form-divider"></div>
+        <div class="form-section-title">Booking Details</div>
+
+        <div class="form-group">
+          <label class="form-label" for="reason">Why Do You Want a Companion? *</label>
+          <select
+            class="form-control"
+            id="reason"
+            name="reason"
+            required
+            aria-required="true"
+          >
+            <option value="" disabled selected>Select a reason...</option>
+            <option value="Someone to Talk To">Someone to Talk To</option>
+            <option value="Emotional Support">Emotional Support</option>
+            <option value="Event Companion">Event Companion</option>
+            <option value="Coffee Date Companion">Coffee Date Companion</option>
+            <option value="Travel Companion">Travel Companion</option>
+            <option value="Friendship">Friendship</option>
+            <option value="Social Gathering Partner">Social Gathering Partner</option>
+            <option value="Other">Other (please specify)</option>
+          </select>
+        </div>
+
+        <!-- Custom reason (shown if Other selected) -->
+        <div class="form-group" id="customReasonGroup" style="display:none;">
+          <label class="form-label" for="customReason">Please Specify *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="customReason"
+            name="customReason"
+            placeholder="Tell me more about what you're looking for..."
+            maxlength="300"
+            aria-required="false"
+          >
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Your Message (Optional)</label>
+          <textarea
+            class="form-control"
+            id="message"
+            name="message"
+            placeholder="Anything special you'd like me to know? Share your thoughts, expectations, or just say hello!"
+            rows="4"
+            maxlength="1000"
+            aria-label="Additional sweet message"
+          ></textarea>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <!-- Female Confirmation -->
+        <div class="female-confirm-box">
+          <label class="checkbox-group" for="isFemale">
+            <input
+              type="checkbox"
+              id="isFemale"
+              name="isFemale"
+              required
+              aria-required="true"
+            >
+            <span class="female-confirm-label">
+              I confirm that I am female and understand that this service is strictly for women.
+              I agree to the service terms — no physical intimacy, sexual services, or inappropriate requests.
+            </span>
+          </label>
+        </div>
+
+        <!-- Contact Notice -->
+        <div class="step-check-wrap" style="margin: 10px 0 20px; background: rgba(255,245,247,0.7); border: 1px solid rgba(201,24,74,0.15); color: var(--c-ink-2); font-weight: 500;">
+          <span>&bull;</span>
+          <span>We will contact you on your Instagram profile or on your mobile number to confirm this booking.</span>
+        </div>
+
+        <!-- Error message area -->
+        <div id="formError" style="display:none; color:#dc2626; font-size:0.9rem; background:#fee2e2; border-radius:8px; padding:12px 16px;" role="alert" aria-live="polite"></div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%; justify-content:center;" id="submitBtn" aria-label="Submit booking">
+          <span id="submitBtnText">Send My Booking Request</span>
+          <span class="spinner" id="submitSpinner" style="display:none;" aria-hidden="true"></span>
+        </button>
+
+        <p style="text-align:center; font-size:0.82rem; color:#8a5060; margin-top:8px;">
+          🔒 Your information is safe and kept completely confidential.
+        </p>
+
+      </form>
+    </div>
+
+    <!-- ─── SUCCESS SCREEN ────────────────────────────────── -->
+    <div class="step-card" id="stepSuccess" role="region" aria-label="Booking successful">
+      <div class="success-screen">
+        <div class="success-icon" style="color:var(--c-rose); font-family:var(--f-display); font-size:4rem; font-weight:800;">✓</div>
+        <h2 class="success-title">Booking Request Sent!</h2>
+        <p style="color:#5a1a28; line-height:1.7; margin-bottom:16px;">
+          Thank you so much for reaching out! Your booking request has been received
+          and I'll get back to you soon via your Instagram or mobile.
+        </p>
+        <div class="success-id" id="successId">ID: ...</div>
+        <p style="color:#8a5060; font-size:0.85rem; margin: 16px 0 24px;">
+          Please keep your mobile number handy — I'll be in touch within 24 hours!
+        </p>
+        <a href="/" class="btn btn-primary">
+          Back to Home
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ═══ Footer ════════════════════════════════════════════════ -->
+<footer class="footer">
+  <p>
+    Rent a Boyfriend · <span style="color: rgba(253,164,175,0.6);">Exclusive Companionship for Women</span>
+  </p>
+  <p style="font-size:0.75rem; opacity:0.4; margin-top:8px;">
+    This service is strictly for companionship, conversation, and emotional support only.
+  </p>
+</footer>
+
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer" aria-live="polite"></div>
+
+<script src="/js/booking.js"></script>
+</body>
+</html>
