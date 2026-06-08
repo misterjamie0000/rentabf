@@ -397,10 +397,32 @@ try {
   console.error('❌ Database encryption migration failed:', e);
 }
 
+// Auto-setup/verify admin credentials
+try {
+  console.log('🔒 Verifying admin credentials...');
+  const db = readDB();
+  const envUsername = process.env.ADMIN_USERNAME || 'admin';
+  const envPassword = process.env.ADMIN_PASSWORD || 'Admin@RentBF2024';
+
+  if (!db.admin || !db.admin.passwordHash || db.admin.username !== envUsername) {
+    console.log('🔐 Hashing and setting up admin credentials...');
+    const saltRounds = 12;
+    db.admin = {
+      username: envUsername,
+      passwordHash: bcrypt.hashSync(envPassword, saltRounds)
+    };
+    writeDB(db);
+    console.log(`✅ Admin credentials set (Username: ${envUsername})`);
+  } else {
+    console.log('✅ Admin credentials verified.');
+  }
+} catch (e) {
+  console.error('❌ Admin setup verification failed:', e);
+}
+
 app.listen(PORT, () => {
   console.log(`\n💖 Rent a Boyfriend Server Running!`);
   console.log(`   🌐 Website: http://localhost:${PORT}`);
   console.log(`   🔐 Admin:   http://localhost:${PORT}/adminnandufleet`);
   console.log(`   📋 Booking: http://localhost:${PORT}/booking`);
-  console.log(`\n   First time? Run: node setup-admin.js`);
 });
